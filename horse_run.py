@@ -1,5 +1,6 @@
 import random
 
+
 def validate_number(guess):
     """
     Verify if the number is an integer
@@ -14,24 +15,25 @@ def validate_number(guess):
         print("Merci d'entrer un entier valide! (ex: 0,1,2, etc...)")
 
     if not valid_number:
-       number = validate_number(guess)
+        number = validate_number(guess)
 
     return int(number)
+
 
 def horse_run():
     """
     Simulate a horse run and ask the choice of number of horses and type to the user
     :return: the list of winner horses in function of run type
     """
-    minhorse = 12
-    maxhorse = 20
+    min_horse = 12
+    max_horse = 20
 
     answer = input("Voulez-vous simuler une course?\n")
 
     while answer.casefold() == "oui":
-        horse_number = validate_number("Veuillez entrez un nombre: ")
+        horse_number = validate_number("Veuillez entrez un nombre de chevaux: ")
 
-        if horse_number < minhorse or horse_number > maxhorse:
+        if horse_number < min_horse or horse_number > max_horse:
             print("Veuillez entrez un nombre compris entre 12 et 20 !")
         else:
             user_choice = run_choice()
@@ -43,16 +45,16 @@ def horse_run():
                 case "quinte":
                     quinte(horse_number)
             answer = input("Voulez-vous simuler une course?\n")
-    else:
-        print("Merci de votre visite, au revoir.")
+
+    print("Merci de votre visite, au revoir.")
+
 
 def run_choice():
     """
     Ask the choice of run type to the user
     :return: type of the run
     """
-    choice: str = ""
-    run_type: dict = {1 : "tierce", 2 : "quarte", 3 : "quinte"}
+    run_type: dict = {1: "tierce", 2: "quarte", 3: "quinte"}
 
     print(run_type)
     user_choice = validate_number("Quel type de course souhaitez vous? ")
@@ -61,6 +63,7 @@ def run_choice():
         return choice
     else:
         print("Veuillez entrer un numéro de la liste !")
+
 
 def tierce(nb_horse: int):
     """
@@ -72,6 +75,7 @@ def tierce(nb_horse: int):
 
     print(winner_tierce)
 
+
 def quarte(nb_horse: int):
     """
     Determine the winner horses list
@@ -81,6 +85,7 @@ def quarte(nb_horse: int):
     winner_quarte = random.sample(range(1, nb_horse), 4)
 
     print(winner_quarte)
+
 
 def quinte(nb_horse: int):
     """
